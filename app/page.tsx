@@ -36,7 +36,7 @@ export default function Page() {
                 gutterBottom
                 sx={{ fontWeight: "bold", color: "#d81b60" }}
               >
-                Birthday Wish 💖
+                 HAWWII GUYYAA DHALOOTAA JAALALLEE KOOTII 💖
               </Typography>
 
               <TextField
@@ -71,7 +71,7 @@ export default function Page() {
                 onClick={() => setWish(true)}
                 disabled={!name}
               >
-                Show Birthday Wish 🎂
+                 AGARSIISA HAWWII GUYYAA DHALOOTAA JAALALLEE KOOTII 🎂
               </Button>
             </>
           ) : (
@@ -82,7 +82,7 @@ export default function Page() {
                 gutterBottom
                 sx={{ fontWeight: "bold", color: "#d81b60" }}
               >
-                Happy Birthday 🎉
+                BAGA DHALATTEE 🎉
               </Typography>
 
               <Typography
