@@ -1,65 +1,139 @@
-import Image from "next/image";
+ "use client";
 
-export default function Home() {
+import { useState } from "react";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  Typography,
+} from "@mui/material";
+
+export default function Page() {
+  const [name, setName] = useState("");
+  const [memory, setMemory] = useState("");
+  const [wish, setWish] = useState(false);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            Programming kiyya jalqabaa barachaan jira! gitthubittin commit godhe!
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        p: 2,
+      }}
+    >
+      <Card sx={{ maxWidth: 500, width: "100%", borderRadius: 4 }}>
+        <CardContent>
+          {!wish ? (
+            <>
+              <Typography
+                variant="h4"
+                align="center"
+                gutterBottom
+                sx={{ fontWeight: "bold", color: "#d81b60" }}
+              >
+                Birthday Wish 💖
+              </Typography>
+
+              <TextField
+                fullWidth
+                label="Your Love's Name"
+                variant="outlined"
+                margin="normal"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+
+              <TextField
+                fullWidth
+                label="A Special Memory or Reason You Love Them"
+                variant="outlined"
+                margin="normal"
+                multiline
+                rows={3}
+                value={memory}
+                onChange={(e) => setMemory(e.target.value)}
+              />
+
+              <Button
+                fullWidth
+                sx={{
+                  mt: 2,
+                  backgroundColor: "#d81b60",
+                  ":hover": { backgroundColor: "#ad1457" },
+                }}
+                variant="contained"
+                size="large"
+                onClick={() => setWish(true)}
+                disabled={!name}
+              >
+                Show Birthday Wish 🎂
+              </Button>
+            </>
+          ) : (
+            <>
+              <Typography
+                variant="h3"
+                align="center"
+                gutterBottom
+                sx={{ fontWeight: "bold", color: "#d81b60" }}
+              >
+                Happy Birthday 🎉
+              </Typography>
+
+              <Typography
+                variant="h4"
+                align="center"
+                sx={{ fontWeight: "bold", mb: 2 }}
+              >
+                My Love, {name} 💕
+              </Typography>
+
+              <Typography variant="body1" align="center" sx={{ mb: 2 }}>
+                Today is not just your birthday — it is the day the world became
+                more beautiful because **you were born**.
+              </Typography>
+
+              <Typography
+                variant="body1"
+                align="center"
+                sx={{ fontStyle: "italic", mb: 2 }}
+              >
+                {memory
+                  ? `"${memory}"`
+                  : "You are my happiness, my peace, and my forever."}
+              </Typography>
+
+              <Typography variant="body1" align="center">
+                May your life be filled with endless smiles, deep love, and all
+                the dreams your heart holds. I am so grateful to love you and to
+                walk this journey with you. 💖
+              </Typography>
+
+              <Typography
+                variant="h6"
+                align="center"
+                sx={{ mt: 3, color: "#d81b60" }}
+              >
+                Forever yours 💘
+              </Typography>
+
+              <Button
+                fullWidth
+                sx={{ mt: 3 }}
+                variant="outlined"
+                onClick={() => setWish(false)}
+              >
+                Edit Message
+              </Button>
+            </>
+          )}
+        </CardContent>
+      </Card>
+    </Box>
   );
 }
